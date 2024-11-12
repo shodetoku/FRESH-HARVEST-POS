@@ -105,4 +105,59 @@
         }
     </script>
 </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">  <!-- Link to your CSS file -->
+    <title>Your Dashboard</title>
+</head>
+<body>
+    <div class="tab-container">
+        <div class="tab" id="sales-tab">Sales</div>
+        <div class="tab" id="inventory-tab">Inventory</div>
+        <div class="tab" id="transaction-tab">Transactions</div>
+    </div>
+
+    <div class="tab-content" id="sales-content">
+        <h2>Sales Report</h2>
+        <div>
+            <h3>Total Sales Amount:</h3>
+            <div id="total-sales"></div>
+        </div>
+        <div>
+            <h3>Product Sales:</h3>
+            <table id="product-sales-table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Total Sales Amount</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div>
+            <h3>Quantity Sold:</h3>
+            <table id="quantity-sold-table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Quantity Sold</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="tab-content" id="inventory-content">
+        <!-- Inventory Report Content will go here -->
+    </div>
+    <div class="tab-content" id="transaction-content">
+        <!-- Transaction Report Content will go here -->
+    </div>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
 </html>

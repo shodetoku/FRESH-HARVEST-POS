@@ -329,3 +329,53 @@ if (loggedInUser ) {
         <a href="login.html" id="login-link">Login</a>
     `;
 }
+
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Hide all tab content
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        // Show the clicked tab's content
+        const contentId = tab.id.replace('-tab', '-content');
+        document.getElementById(contentId).style.display = 'block';
+    });
+});
+
+// Show the sales tab content by default
+document.getElementById('sales-content').style.display = 'block';
+
+// Example SQL queries (pseudo-code)
+const totalSalesQuery = "SELECT SUM(sale_amount) FROM Sales WHERE date BETWEEN start_date AND end_date;";
+const productSalesQuery = "SELECT product_id, SUM(sale_amount) FROM Sales GROUP BY product_id;";
+const quantitySoldQuery = "SELECT product_id, SUM(quantity) FROM Sales GROUP BY product_id;";
+
+// Fetch data and update the DOM (pseudo-code)
+function updateSalesReport() {
+    // Fetch total sales and update
+    const totalSales = executeQuery(totalSalesQuery);
+    document.getElementById('total-sales').innerText = totalSales
+    // Fetch product sales and update
+    const productSales = executeQuery(productSalesQuery);
+    const productSalesTableBody = document.getElementById('product-sales-table').getElementsByTagName('tbody')[0];
+    productSalesTableBody.innerHTML = ''; // Clear existing rows
+    productSales.forEach(sale => {
+        const row = productSalesTableBody.insertRow();
+        row.insertCell(0).innerText = sale.product_id; // Assuming 'product_id' is the field name
+        row.insertCell(1).innerText = sale.total_sales; // Assuming 'total_sales' is the field name
+    });
+
+    // Fetch quantity sold and update
+    const quantitySold = executeQuery(quantitySoldQuery);
+    const quantitySoldTableBody = document.getElementById('quantity-sold-table').getElementsByTagName('tbody')[0];
+    quantitySoldTableBody.innerHTML = ''; // Clear existing rows
+    quantitySold.forEach(item => {
+        const row = quantitySoldTableBody.insertRow();
+        row.insertCell(0).innerText = item.product_id; // Assuming 'product_id' is the field name
+        row.insertCell(1).innerText = item.quantity_sold; // Assuming 'quantity_sold' is the field name
+    });
+}
+
+// Call the function to update the sales report when the page loads
+document.addEventListener('DOMContentLoaded', updateSalesReport);
