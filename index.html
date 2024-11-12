@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Harvest POS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-leaf"></i> Fresh Harvest POS</h1>
+        <div id="user-menu">
+            <a href="create_account.html" id="create-account-link">Create Account</a>
+            <a href="login.html" id="login-link">Login</a>
+            <a href="#" id="logout" style="display: none;">Logout</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="menu">
+            <h2>Menu</h2>
+            <input type="text" id="search" placeholder="Search by SKU or Name">
+            <div id="food-items" class="food-items-grid">
+                <!-- Menu items will be dynamically generated here -->
+            </div>
+        </div>
+    
+        <div class="checkout">
+            <h2>Checkout</h2>
+            <div id="order-summary"></div>
+            <div id="vat-summary" style="display:none;"></div>
+            <button id="pay-button" style="display:none;">Pay</button>
+            <div id="cash-input" style="display:none;">
+                <input type="number" id="cash-amount" placeholder="Enter cash amount">
+                <button id="confirm-payment">Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="receipt" class="receipt-popup" style="display: none;">
+        <div class="receipt-content" id="receipt-content"></div>
+        <button class="transparent-button" onclick="printReceipt()">Print Receipt</button>
+        <button class="transparent-button" onclick="closeReceipt()">Close</button>
+    </div>
+
+    <div id="item-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <!-- Floating Emojis Container -->
+            <div id="floating-emojis" class="floating-emojis"></div>
+            
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-item-name"></h2>
+            <img id="modal-item-image" src="" alt="" width="100">
+            <p id="modal-item-description"></p>
+            <p id="modal-item-price"></p>
+            <input type="number" id="qty-input" min="1" value="1" style="width: 60%; margin: 10px 0;">
+            <button onclick="addToCart(currentSku)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="product-modal" class="product-modal">
+        <div class="product-modal-content">
+            <span class="close">&times;</span>
+            <img id="product-modal-image" src="" alt="Product Image">
+            <h3 id="product-modal-name"></h3>
+            <p id="product-modal-sku"></p>
+            <p id="product-modal-description"></p>
+            <p id="product-modal-price"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in
+        const loggedInUser  = JSON.parse(localStorage.getItem('currentUser    '));
+        const userMenu = document.getElementById('user-menu');
+        const createAccountLink = document.getElementById('create-account-link');
+        const loginLink = document.getElementById('login-link');
+        const dashboardLink = document.getElementById('dashboard-link');
+        const logoutLink = document.getElementById('logout');
+
+        if (loggedInUser ) {
+            // If user is logged in, display welcome message and dashboard link
+            userMenu.innerHTML = `
+                <span>Welcome, ${loggedInUser .username}</span>
+                <a href="dashboard.html" id="dashboard-link">Dashboard</a>
+                <a href="#" id="logout">Logout</a>
+            `;
+
+            // Logout functionality
+            logoutLink.addEventListener('click', function() {
+                localStorage.removeItem('currentUser    '); // Remove user from local storage
+                window.location.href = 'login.html'; // Redirect to login page
+            });
+
+            // Hide Create Account and Login links
+            createAccountLink.style.display = 'none';
+            loginLink.style.display = 'none';
+        } else {
+            // If no user is logged in, show Create Account and Login links
+            userMenu.innerHTML = `
+                <a href="create_account.html" id="create-account-link">Create Account</a>
+                <a href="login.html" id="login-link">Login</a>
+            `;
+        }
+    </script>
+</body>
+</html>

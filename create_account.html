@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account - Fresh Harvest POS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .signup-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .signup-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create New Account</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label>Role:</label>
+                <select id="role" required>
+                    <option value="cashier">Cashier</option>
+                    <option value="manager">Manager</option>
+                </select>
+            </div>
+            <button type="submit" class="signup-btn">Create Account</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <script>
+        // Enhanced password hashing function
+        function hashPassword(password) {
+            let hash = 0;
+            for (let i = 0; i < password.length; i++) {
+                const char = password.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32-bit integer
+            }
+            return Math.abs(hash).toString(16);
+        }
+    
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+    
+            // Hash the password before saving
+    const hashedPassword = hashPassword(password);
+    
+            // Validation
+            if (username.length < 3) {
+                alert('Username must be at least 3 characters long');
+                return;
+            }
+    
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return;
+            }
+    
+            // Get existing users or initialize empty array
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+    
+            // Check if username already exists
+            if (users.some(user => user.username === username)) {
+                alert('Username already exists! Please choose another.');
+                return;
+            }
+    
+            // Add new user with hashed password
+            users.push({
+                username: username,
+                password: hashPassword(password), // Hash the password
+                role: role,
+                fullName: username, // Optional: Add full name
+                createdAt: new Date().toISOString()
+            });
+    
+            // Save to localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+    
+            alert('Account created successfully!');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

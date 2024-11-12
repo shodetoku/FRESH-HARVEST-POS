@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cashier Dashboard - Fresh Harvest POS</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1><i class="fas fa-leaf"></i> Cashier Dashboard</h1>
+            <div>
+                <span id="username-display"></span>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item" onclick="location.href='index.html'">
+                <i class="fas fa-cash-register"></i>
+                <h3>Point of Sale</h3>
+                <p>Process customer transactions</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='dashboard-features.html#transactions'">
+                <i class="fas fa-receipt"></i>
+                <h3>Today's Transactions</h3>
+                <p>View your sales history</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='dashboard-features.html#inventory'">
+                <i class="fas fa-boxes"></i>
+                <h3>Inventory</h3>
+                <p>Check product inventory levels</p>
+            </div>
+        </div>
+
+        <!-- Quick Stats Section -->
+        <div class="stats-container">
+            <div class="stats-card">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Your Sales Today</h4>
+                <div class="number" id="cashier-sales">₱0.00</div>
+            </div>
+            
+            <div class="stats-card">
+                <i class="fas fa-shopping-cart"></i>
+                <h4>Transactions</h4>
+                <div class="number" id="cashier-transactions">0</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    // Comprehensive Authentication and Session Management
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentUser  = JSON.parse(localStorage.getItem('currentUser '));
+        
+        if (!currentUser ) {
+            alert('Please log in to access the dashboard');
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Update username display
+        const usernameDisplay = document.getElementById('username-display');
+        if (usernameDisplay) {
+            usernameDisplay.textContent = `Welcome, ${currentUser .fullName || currentUser .username}!`;
+        }
+
+        // Update cashier statistics
+        updateCashierStats();
+    });
+
+    function updateCashierStats() {
+        const currentUser  = JSON.parse(localStorage.getItem('currentUser '));
+        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+        
+        const today = new Date().toDateString();
+        const cashierTodayTransactions = transactions.filter(t => 
+            t.cashier === currentUser .username && 
+            new Date(t.date).toDateString() === today
+        );
+
+        const cashierSales = cashierTodayTransactions.reduce((total, trx) => total + trx.total, 0);
+
+        document.getElementById('cashier-sales').textContent = `₱${cashierSales.toFixed(2)}`;
+        document.getElementById('cashier-transactions').textContent = cashierTodayTransactions.length;
+    }
+
+    function logout() {
+        localStorage.removeItem('currentUser ');
+        window.location.href = 'login.html';
+    }
+    </script>
+</body>
+</html>

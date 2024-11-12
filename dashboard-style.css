@@ -1,0 +1,50 @@
+/* dashboard-style.css */
+
+.hidden {
+    display: none; /* Hide elements with this class */
+}
+
+.collapsible-section {
+    margin-bottom: 20px;
+}
+
+.collapsible {
+    background-color: #3e703f; /* Green background */
+    color: rgb(59, 134, 59);
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    width: 100%; /* Full width */
+    transition: background-color 0.3s;
+}
+
+.collapsible:hover {
+    background-color: #728b74; /* Darker green on hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; /* Space between header and table */
+}
+
+th {
+    background-color: #e8f5e9; /* Light green for header */
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}
+/* Optional: Style for clickable sections */
+section:hover {
+    background-color: #e8f5e9; /* Light green background on hover */
+}

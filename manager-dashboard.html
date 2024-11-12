@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager Dashboard - Fresh Harvest POS</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1><i class="fas fa-leaf"></i> Manager Dashboard</h1>
+            <div>
+                <span id="username-display"></span>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item" onclick="location.href='dashboard-features.html#inventory'">
+                <i class="fas fa-boxes"></i>
+                <h3>Inventory Management</h3>
+                <p>Track and manage product inventory</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='dashboard-features.html#sales'">
+                <i class="fas fa-chart-line"></i>
+                <h3>Sales Reports</h3>
+                <p>View detailed sales analytics</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='dashboard-features.html#users'">
+                <i class="fas fa-users"></i>
+                <h3>User Management</h3>
+                <p>Manage employee accounts</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='dashboard-features.html#settings'">
+                <i class="fas fa-cog"></i>
+                <h3>Settings</h3>
+                <p>System configuration</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='index.html'">
+                <i class="fas fa-cash-register"></i>
+                <h3>Point of Sale</h3>
+                <p>Access POS System</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='dashboard-features.html#transactions'">
+                <i class="fas fa-receipt"></i>
+                <h3>Today's Transactions</h3>
+                <p>View today's sales records</p>
+            </div>
+            
+            <div class="menu-item" onclick="location.href='dashboard-features.html#profile'">
+                <i class="fas fa-user-circle"></i>
+                <h3>Profile</h3>
+                <p>Manage your account</p>
+            </div>
+        </div>
+
+        <!-- Quick Stats Section -->
+        <div class="stats-container">
+            <div class="stats-card">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Today's Sales</h4>
+                <div class="number" id="today-sales">₱0.00</div>
+            </div>
+            
+            <div class="stats-card">
+                <i class="fas fa-shopping-cart"></i>
+                <h4>Total Orders</h4>
+                <div class="number" id="total-orders">0</div>
+            </div>
+            
+            <div class="stats-card">
+                <i class="fas fa-box"></i>
+                <h4>Low Stock Items</h4>
+                <div class="number" id="low-stock">0</div>
+            </div>
+        </div>
+
+        <!-- Inventory Management Section -->
+        <div id="inventory" class="feature-content">
+            <h2>Inventory Management</h2>
+            <table id="inventory-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-body">
+                    <tr>
+                        <td>SKU001</td>
+                        <td>Vegan Burger</td>
+                        <td>₱150.00</td>
+                        <td id="qty-SKU001">30</td>
+                        <td>
+                            <input type="number" id="initial-stock-SKU001" min="1" placeholder="Initial Stock">
+                            <button onclick="setInitialStock('SKU001')">Set Initial Stock</button>
+                            <input type="number" id="restock-qty-SKU001" min="1" placeholder="New Stock">
+                            <button onclick="updateStock('SKU001')">Update Stock</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SKU002</td>
+                        <td>Vegan Sausages</td>
+                        <td>₱120.00</td>
+                        <td id="qty-SKU002">30</td>
+                        <td>
+                            <input type="number" id="initial-stock-SKU002" min="1" placeholder="Initial Stock">
+                            <button onclick="setInitialStock('SKU002')">Set Initial Stock</button>
+                            <input type="number" id="restock-qty-SKU002" min="1" placeholder="New Stock">
+                            <button onclick="updateStock('SKU002')">Update Stock</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SKU003</td>
+                        <td>Tofu Sisig</td>
+                        <td>₱100.00</td>
+                        <td id="qty-SKU003">30</td>
+                        <td>
+                            <input type="number" id="initial-stock-SKU003" min="1" placeholder="Initial Stock">
+                            <button onclick="setInitialStock('SKU003')">Set Initial Stock</button>
+                            <input type="number" id="restock-qty-SKU003" min="1" placeholder="New Stock">
+                            <button onclick="updateStock('SKU003')">Update Stock</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SKU004</td>
+                        <td>Jackfruit BBQ</td>
+                        <td>₱80.00</td>
+                        <td id="qty-SKU004">30</td>
+                        <td>
+                            <input type="number" id="initial-stock-SKU004" min="1" placeholder="Initial Stock">
+                            <button onclick="setInitialStock('SKU004')">Set Initial Stock</button>
+                            <input type="number" id="restock-qty-SKU004" min="1" placeholder="New Stock">
+                            <button onclick="updateStock('SKU004')">Update Stock</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SKU005</td>
+                        <td>Vegan Pizza</td>
+                        <td>₱110.00</td>
+                        <td id="qty-SKU005">30</td>
+                        <td>
+                            <input type="number" id="initial-stock-SKU005" min="1" placeholder="Initial Stock">
+                            <button onclick="setInitialStock('SKU005')">Set Initial Stock</button>
+                            <input type="number" id="restock-qty-SKU005" min="1" placeholder="New Stock">
+                            <button onclick="updateStock('SKU005')">Update Stock</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SKU006</td>
+                        <td>Lentil Curry</td>
+                        <td>₱140.00</td>
+                        <td id="qty-SKU006">30</td>
+                        <td>
+                            <input type="number" id="initial-stock-SKU006" min="1" placeholder="Initial Stock">
+                            <button onclick="setInitialStock('SKU006')">Set Initial Stock</button>
+                            <input type="number" id="restock-qty-SKU006" min="1" placeholder="New Stock">
+                            <button onclick="updateStock('SKU006')">Update Stock</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SKU007</td>
+                        <td>Mushroom Stroganoff</td>
+                        <td>₱90.00</td>
+                        <td id="qty-SKU007">30</td>
+                        <td>
+                            <input type="number" id="initial-stock-SKU007" min="1" placeholder="Initial Stock">
+                            <button onclick="setInitialStock('SKU007')">Set Initial Stock</button>
+                            <input type="number" id="restock-qty-SKU007" min="1" placeholder="New Stock">
+                            <button onclick="updateStock('SKU007')">Update Stock</button>
+                        </td>
+                    </tr>
+                    <!-- Add more products as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Function to set initial stock
+        function setInitialStock(sku) {
+            const initialStock = document.getElementById(`initial-stock-${sku}`).value;
+            if (initialStock) {
+                document.getElementById(`qty-${sku}`).innerText = initialStock;
+                alert(`Initial stock for ${sku} set to ${initialStock}`);
+                document.getElementById(`initial-stock-${sku}`).value = ''; // Clear input field
+            } else {
+                alert('Please enter a valid initial stock quantity.');
+            }
+        }
+
+        // Function to update stock
+        function updateStock(sku) {
+            const restockQty = document.getElementById(`restock-qty-${sku}`).value;
+            const currentQty = parseInt(document.getElementById(`qty-${sku}`).innerText);
+            if (restockQty) {
+                const newQty = currentQty + parseInt(restockQty);
+                document.getElementById(`qty-${sku}`).innerText = newQty;
+                alert(`Stock for ${sku} updated to ${newQty}`);
+                document.getElementById(`restock-qty-${sku}`).value = ''; // Clear input field
+            } else {
+                alert('Please enter a valid quantity to restock.');
+            }
+        }
+
+        // Function to logout
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+
+        // Function to display logged in user's name
+function displayUserName() { // Fixed function name
+    const loggedInUser  = JSON.parse(localStorage.getItem('loggedInUser ')); // Removed extra space
+    if (loggedInUser ) {
+        document.getElementById('username-display').innerText = `Welcome, ${loggedInUser .username}`;
+    }
+}
+
+// Call the displayUser Name function when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    displayUserName(); // Correct function call
+    // You can also fetch today's sales and total orders here if needed
+});
+
+    </script>
+</body>
+</html>
