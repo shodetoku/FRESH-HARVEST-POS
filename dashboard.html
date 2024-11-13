@@ -21,23 +21,24 @@
         <div class="collapsible-section">
             <h2 class="collapsible" onclick="toggleTable('sales-section')">Sales Report</h2>
             <div id="sales-section" class="hidden">
-                <table id="sales-table">
-                    <thead>
-                        <tr>
-                            <th>Sale ID</th>
-                            <th>Product ID</th>
-                            <th>Category</th>
-                            <th>Quantity</th>
-                            <th>Sale Amount</th>
-                            <th>Sale Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Sales data will be populated here -->
-                    </tbody>
-                </table>
+                <div id="sales-report"></div>
             </div>
         </div>
+    
+        <div class="collapsible-section">
+            <h2 class="collapsible" onclick="toggleTable('inventory-section')">Inventory Report</h2>
+            <div id="inventory-section" class="hidden">
+                <div id="inventory-report"></div>
+            </div>
+        </div>
+    
+        <div class="collapsible-section">
+            <h2 class="collapsible" onclick="toggleTable('transactions-section')">Transaction Report</h2>
+            <div id="transactions-section" class="hidden">
+                <div id="transaction-report"></div>
+            </div>
+        </div>
+    </main>
 
         <div class="collapsible-section">
             <h2 class="collapsible" onclick="toggleTable('inventory-section')">Inventory Report</h2>

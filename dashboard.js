@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         document.getElementById('welcome-message').innerText = `Welcome, ${loggedInUser .username}`;
 
+        // Function to get sales report
+function getSalesReport() {
+    const salesReportDiv = document.getElementById('sales-report');
+    salesReportDiv.innerHTML = ''; // Clear previous content
+
         // Sample data for Sales, Inventory, and Transactions
         const salesData = [
             { sale_id: 1, product_id: 'SKU001', category: 'Main', qty: 3, sale_amount: 450, sale_date: '2023-10-01 12:00' },
@@ -42,6 +47,20 @@ document.addEventListener('DOMContentLoaded', function() {
             { sale_id: 30, product_id: 'SKU030', category: 'Snacks', qty: 1, sale_amount: 100, sale_date: '2023-10-30 20:00' },
         ];
 
+        // Display sales report
+    salesData.forEach(sale => {
+        const reportItem = document.createElement('div');
+        reportItem.innerHTML = `Sale ID: ${sale.sale_id}, Product ID: ${sale.product_id}, Quantity: ${sale.qty}, Amount: ₱${sale.sale_amount}, Date: ${sale.sale_date}`;
+        salesReportDiv.appendChild(reportItem);
+    });
+}
+
+// Function to get inventory report
+function getInventoryReport() {
+    const inventoryReportDiv = document.getElementById('inventory-report');
+    inventoryReportDiv.innerHTML = ''; // Clear previous content
+
+
         const inventoryData = [
             { product_id: 'SKU001', product_name: 'Vegan Burger', category: 'Main', current_stock: 50, reorder_level: 10 },
             { product_id: 'SKU002', product_name: 'Vegan Sausages', category: 'Main', current_stock: 30, reorder_level: 5 },
@@ -75,6 +94,19 @@ document.addEventListener('DOMContentLoaded', function() {
             { product_id: 'SKU030', product_name: 'Fruit Sorbet', category: 'Desserts', current_stock: 20, reorder_level: 5 },
         ];
 
+         // Display inventory report
+    inventoryData.forEach(item => {
+        const reportItem = document.createElement('div');
+        reportItem.innerHTML = `Product ID: ${item.product_id}, Name: ${item.product_name}, Current Stock: ${item.current_stock}, Reorder Level: ${item.reorder_level}`;
+        inventoryReportDiv.appendChild(reportItem);
+    });
+}
+
+// Function to get transaction report
+function getTransactionReport() {
+    const transactionReportDiv = document.getElementById('transaction-report');
+    transactionReportDiv.innerHTML = ''; // Clear previous content
+
         const transactionsData = [
             { transaction_id: 1, transaction_date: '2023-10-01', transact_amount: 450, items_sold: 3 },
             { transaction_id: 2, transaction_date: '2023-10-02', transact_amount: 240, items_sold: 2 },
@@ -107,6 +139,31 @@ document.addEventListener('DOMContentLoaded', function() {
             { transaction_id: 29, transaction_date: '2023-10-29', transact_amount: 180, items_sold: 2 },
             { transaction_id: 30, transaction_date: '2023-10-30', transact_amount: 100, items_sold: 1 },
         ];
+
+ // Display transaction report
+ transactionData.forEach(transaction => {
+    const reportItem = document.createElement('div');
+    reportItem.innerHTML = `Transaction ID: ${transaction.transaction_id}, Date: ${transaction.transaction_date}, Amount: ₱${transaction.transaction_amount}, Items Sold: ${transaction.items_sold}`;
+    transactionReportDiv.appendChild(reportItem);
+});
+}
+
+// Function to toggle the visibility of the sections (Sales, Inventory, Transactions)
+function toggleTable(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section.classList.contains('hidden')) {
+        section.classList.remove('hidden'); // Show the section
+    } else {
+        section.classList.add('hidden'); // Hide the section
+    }
+}
+
+// Call the report functions when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    getSalesReport();        // Fetch and display sales report
+    getInventoryReport();    // Fetch and display inventory report
+    getTransactionReport();  // Fetch and display transaction report
+});
 
   // Populate tables
   populateTable('sales-table', salesData, ['sale_id', 'product_id', 'category', 'qty', 'sale_amount', 'sale_date']);

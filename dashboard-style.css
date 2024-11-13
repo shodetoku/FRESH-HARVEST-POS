@@ -10,7 +10,7 @@
 
 .collapsible {
     background-color: #3e703f; /* Green background */
-    color: rgb(59, 134, 59);
+    color: white;
     padding: 10px;
     cursor: pointer;
     border: none;
@@ -23,6 +23,13 @@
 
 .collapsible:hover {
     background-color: #728b74; /* Darker green on hover */
+}
+
+#sales-report, #inventory-report, #transaction-report {
+    padding: 10px;
+    background-color: #e8f5e9; /* Light green for report background */
+    border: 1px solid #ccc; /* Border for reports */
+    margin-top: 10px; /* Space above report */
 }
 
 table {
