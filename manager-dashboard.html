@@ -4,18 +4,73 @@
     <title>Manager Dashboard - Fresh Harvest POS</title>
     <link rel="stylesheet" href="dashboard-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Tab Navigation Styles */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-around; /* Space between tabs */
+            background-color: #4CAF50; /* Tab background color */
+            padding: 10px 0; /* Padding for the tab bar */
+        }
+
+        .tab {
+            cursor: pointer; /* Change cursor on hover */
+            color: white; /* Text color */
+            text-align: center; /* Center text */
+            flex: 1; /* Equal width for each tab */
+        }
+
+        .tab i {
+            font-size: 24px; /* Icon size */
+            display: block; /* Icons on top */
+        }
+
+        .tab span {
+            font-size: 14px; /* Font size for tab text */
+        }
+
+        .tab:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 20px; /* Padding for sections */
+            border: 1px solid #ccc; /* Border for sections */
+            border-radius: 5px; /* Rounded corners */
+            margin-top: 20px; /* Space above sections */
+        }
+
+        .hidden {
+            display: none; /* Hide elements with this class */
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-container">
         <div class="header">
             <h1><i class="fas fa-leaf"></i> Manager Dashboard</h1>
             <div>
-                <span id="username-display"></span>
                 <button class="logout-btn" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </div>
         </div>
+
+        <nav class="tab-navigation">
+            <div class="tab" onclick="showSection('inventory')">
+                <i class="fas fa-boxes"></i>
+                <span>INVENTORY</span>
+            </div>
+            <div class="tab" onclick="showSection('sales')">
+                <i class="fas fa-chart-line"></i>
+                <span>SALES</span>
+            </div>
+            <div class="tab" onclick="showSection('transactions')">
+                <i class="fas fa-receipt"></i>
+                <span>TRANSACTIONS</span>
+            </div>
+        </nav>
 
         <div class="menu-grid">
             <div class="menu-item" onclick="location.href='dashboard-features.html#inventory'">

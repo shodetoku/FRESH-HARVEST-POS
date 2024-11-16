@@ -17,21 +17,6 @@ const menuItems = [
     { sku: 'SKU013', name: 'Sweet Potato Fries', price: withVAT(80), image: 'images/sweet_potato_fries.jpg', qty: 30, description: 'Crispy sweet potato fries seasoned to perfection.' },
     { sku: 'SKU014', name: 'Hummus & Veggies', price: withVAT(90), image: 'images/hummus_veggies.jpg', qty: 30, description: 'Creamy hummus served with fresh vegetables for dipping.' },
     { sku: 'SKU015', name: 'Vegan Dumplings', price: withVAT(100), image: 'images/vegan_dumplings.jpg', qty: 30, description: 'Savory dumplings filled with vegetables and spices.' },
-    { sku: 'SKU016', name: 'Popcorn Tofu', price: withVAT(70), image: 'images/popcorn_tofu.jpg', qty: 30, description: 'Crispy popcorn tofu served with a sweet and spicy sauce.' },
-    { sku: 'SKU017', name: 'Edamame', price: withVAT(50), image: 'images/edamame.jpg', qty: 30, description: 'Steamed edamame sprinkled with sea salt.' },
-    { sku: 'SKU018', name: 'Roasted Chickpeas', price: withVAT(60), image: 'images/roasted_chickpeas.jpg', qty: 30, description: 'Crispy roasted chickpeas seasoned with spices for a healthy snack.' },
-    { sku: 'SKU019', name: 'Vegan Nachos', price: withVAT(100), image: 'images/vegan_nachos.jpg', qty: 30, description: 'Crispy nachos topped with vegan cheese, jalapeños, and guacamole.' },
-    { sku: 'SKU020', name: 'Stuffed Peppers', price: withVAT(90), image: 'images/stuffed_peppers.jpg', qty: 30, description: 'Bell peppers stuffed with quinoa, beans, and spices.' },
-    { sku: 'SKU021', name: 'Vegan Brownies', price: withVAT(70), image: 'images/vegan_brownies.jpg', qty: 30, description: 'Rich and fudgy brownies made without eggs or dairy.' },
-    { sku: 'SKU022', name: 'Coconut Ice Cream', price: withVAT(80), image: 'images/coconut_ice_cream.jpg', qty: 30, description: 'Creamy coconut ice cream, dairy-free and delicious.' },
-    { sku: 'SKU023', name: 'Almond Butter Cookies', price: withVAT(75), image: 'images/almond_butter_cookies.jpg', qty: 30, description: 'Chewy cookies made with almond butter and oats.' },
-    { sku: 'SKU024', name: 'Avocado Mousse', price: withVAT(90), image: 'images/avocado_mousse.jpg', qty: 30, description: 'Silky smooth mousse made with ripe avocados and cocoa.' },
-    { sku: 'SKU025', name: 'Vegan Cheesecake', price: withVAT(120), image: 'images/vegan_cheesecake.jpg', qty: 30, description: 'Creamy cheesecake made with cashews and a nut crust.' },
-    { sku: 'SKU026', name: 'Chia Pudding', price: withVAT(80), image: 'images/chia_pudding.jpg', qty: 30, description: 'Healthy chia pudding topped with fresh fruits.' },
-    { sku: 'SKU027', name: 'Banana Bread', price: withVAT(70), image: 'images/banana_bread.jpg', qty: 30, description: 'Moist banana bread made with ripe bananas and walnuts.' },
-    { sku: 'SKU028', name: 'Vegan Donuts', price: withVAT(90), image: 'images/vegan_donuts.jpg', qty: 30, description: 'Fluffy vegan donuts topped with glaze or sprinkles.' },
-    { sku: 'SKU029', name: 'Energy Balls', price: withVAT(100), image: 'images/energy_balls.jpg', qty: 30, description: 'Nutritious energy balls made with oats, nuts, and dried fruits.' },
-    { sku: 'SKU030', name: 'Fruit Sorbet', price: withVAT(75), image: 'images/fruit_sorbet.jpg', qty: 30, description: 'Refreshing fruit sorbet made with real fruit and no dairy.' },
 ];
 
 let cart = [];

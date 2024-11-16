@@ -74,42 +74,37 @@ header h1 i {
 
 /* Food Items Grid */
 .food-items-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    display: grid; /* Use CSS Grid Layout */
+    grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+    gap: 20px; /* Space between items */
 }
 
 /* Menu Item Styles */
 .menu-item {
-    background-color: white;
-    border: 1px solid #c8e6c9;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+    background-color: white; /* Background color for menu items */
+    border: 1px solid #c8e6c9; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside each item */
+    text-align: center; /* Center text */
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1); /* Shadow effect */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animation effects */
 }
 
 .menu-item img {
-    max-width: 100px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    max-width: 100px; /* Maximum width for images */
+    margin-bottom: 10px; /* Space below the image */
+    border-radius: 8px; /* Rounded corners for images */
 }
 
 .menu-item h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 18px; /* Font size for item name */
+    margin-bottom: 5px; /* Space below the item name */
 }
 
 .menu-item p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: 16px; /* Font size for item description */
+    color: #666; /* Color for description text */
+    margin-bottom: 10px; /* Space below description */
 }
 
 .menu-item input {
@@ -121,13 +116,13 @@ header h1 i {
 .checkout {
     width: 35%;
     padding: 20px;
-    background-image: url('images/checkout_background.jpg'); /* Replace with your image path */
-    background-size: cover; /* Adjusts the background image to cover the entire box */
-    background-position: center; /* Centers the background image */
+    background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'60\' height=\'60\' viewBox=\'0 0 60 60\'%3E%3Crect width=\'60\' height=\'60\' fill=\'%23e8f5e9\'/%3E%3Ccircle cx=\'15\' cy=\'15\' r=\'10\' fill=\'%23a5d6a7\' opacity=\'0.5\'/%3E%3Ccircle cx=\'45\' cy=\'45\' r=\'10\' fill=\'%23a5d6a7\' opacity=\'0.5\'/%3E%3C/svg%3E');
+    background-size: 30px; /* Adjust size of the pattern */
+    background-repeat: repeat; /* Repeat the background pattern */
     border-radius: 10px;
     border: 2px solid #b2e0b2; /* Sage green border */
     box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
-    color: rgb(95, 170, 114); /* Change text color to ensure readability */
+    color: rgb(0, 0, 0); /* Change text color to ensure readability */
 }
 
 .checkout h2 {
@@ -433,4 +428,44 @@ button:hover {
 
 .tab-content {
     display: none; /* Hide all tab content by default */
+}
+
+/* Tab Navigation Styles */
+.tab-navigation {
+    display: flex;
+    justify-content: space-around; /* Space between tabs */
+    background-color: #4CAF50; /* Tab background color */
+    padding: 10px 0; /* Padding for the tab bar */
+}
+
+.tab {
+    cursor: pointer; /* Change cursor on hover */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    flex: 1; /* Equal width for each tab */
+}
+
+.tab i {
+    font-size: 24px; /* Icon size */
+    display: block; /* Icons on top */
+}
+
+.tab span {
+    font-size: 14px; /* Font size for tab text */
+}
+
+.tab:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Section Styles */
+.section {
+    padding: 20px; /* Padding for sections */
+    border: 1px solid #ccc; /* Border for sections */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px; /* Space above sections */
+}
+
+.hidden {
+    display: none; /* Hide elements with this class */
 }
