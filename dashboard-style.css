@@ -25,12 +25,6 @@
     background-color: #728b74; /* Darker green on hover */
 }
 
-#sales-report, #inventory-report, #transaction-report {
-    padding: 10px;
-    background-color: #e8f5e9; /* Light green for report background */
-    border: 1px solid #ccc; /* Border for reports */
-    margin-top: 10px; /* Space above report */
-}
 
 table {
     width: 100%;
@@ -54,4 +48,47 @@ tr:hover {
 /* Optional: Style for clickable sections */
 section:hover {
     background-color: #e8f5e9; /* Light green background on hover */
+}
+
+/* Add this CSS to your dashboard-style.css or styles.css */
+.tab-container {
+    display: flex;
+    justify-content: space-around; /* Space between tabs */
+    margin: 20px 0; /* Space above and below */
+}
+
+.tab {
+    background-color: #56d64a; /* Green background */
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tab:hover {
+    background-color: #a4e6a4; /* Darker green on hover */
+}
+
+/* Inventory Table Styles */
+#inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#inventory-table th, #inventory-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#inventory-table th {
+    background-color: #f4f4f4;
+}
+
+#inventory-table img {
+    max-width: 100px;
+    border-radius: 5px;
 }

@@ -46,6 +46,21 @@
         }
     </style>
 </head>
+<main>
+
+    <div class="tab-container">
+        <div class="tab" onclick="location.href='inventory.html'">
+            <h3>INVENTORY</h3>
+        </div>
+        <div class="tab" onclick="location.href='transactions.html'">
+            <h3>TRANSACTIONS</h3>
+        </div>
+        <div class="tab" onclick="location.href='sales.html'">
+            <h3>SALES</h3>
+        </div>
+    </div>
+
+</main>
 <body>
     <div class="dashboard-container">
         <div class="header">
@@ -239,6 +254,24 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div id="transactions" class="feature-content hidden">
+        <h2>Transaction Records</h2>
+        <table id="transaction-table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Date and Time</th>
+                    <th>Amount</th>
+                    <th>Items Sold</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-body">
+                <!-- Transaction records will be populated here -->
+            </tbody>
+        </table>
+        <button onclick="recordTransaction()">Record Transaction</button>
     </div>
 
     <script>

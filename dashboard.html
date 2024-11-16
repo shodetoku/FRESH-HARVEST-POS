@@ -18,62 +18,22 @@
     </header>
 
     <main>
-        <div class="collapsible-section">
-            <h2 class="collapsible" onclick="toggleTable('sales-section')">Sales Report</h2>
-            <div id="sales-section" class="hidden">
-                <div id="sales-report"></div>
-            </div>
-        </div>
-    
-        <div class="collapsible-section">
-            <h2 class="collapsible" onclick="toggleTable('inventory-section')">Inventory Report</h2>
-            <div id="inventory-section" class="hidden">
-                <div id="inventory-report"></div>
-            </div>
-        </div>
-    
-        <div class="collapsible-section">
-            <h2 class="collapsible" onclick="toggleTable('transactions-section')">Transaction Report</h2>
-            <div id="transactions-section" class="hidden">
-                <div id="transaction-report"></div>
-            </div>
-        </div>
+    <!-- Add this inside the <main> section of manager-dashboard.html -->
+<div class="tab-container">
+    <div class="tab" onclick="location.href='inventory.html'">
+        <h3>INVENTORY</h3>
+    </div>
+    <div class="tab" onclick="location.href='transactions.html'">
+        <h3>TRANSACTIONS</h3>
+    </div>
+    <div class="tab" onclick="location.href='sales.html'">
+        <h3>SALES</h3>
+    </div>
+</div>
     </main>
-
-        <div class="collapsible-section">
-            <h2 class="collapsible" onclick="toggleTable('inventory-section')">Inventory Report</h2>
-            <div id="inventory-section" class="hidden">
-                <table id="inventory-table">
-                    <thead>
-                        <tr>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Current Stock</th>
-                            <th>Reorder Level</th>
-                        </tr>
                     </thead>
                     <tbody>
                         <!-- Inventory data will be populated here -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="collapsible-section">
-            <h2 class="collapsible" onclick="toggleTable('transactions-section')">Transaction Report</h2>
-            <div id="transactions-section" class="hidden">
-                <table id="transactions-table">
-                    <thead>
-                        <tr>
-                            <th>Transaction ID</th>
-                            <th>Transaction Date</th>
-                            <th>Transaction Amount</th>
-                            <th>Items Sold</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Transaction data will be populated here -->
                     </tbody>
                 </table>
             </div>
